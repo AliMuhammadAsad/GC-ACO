@@ -21,7 +21,6 @@ if __name__ == "__main__":
     print("#---------------------------------------- Graph Coloring Using Ant Colony Optimization ----------------------------------------#")
     print("| Alpha | Beta | Gamma |  Q  | Num Ants | Iterations |")
     print(f"|   {alpha}   |   {beta}  |  {gamma}  |  {Q} |     {numAnts}   |     {iterations}     |")
-    # print(f"Running with Params: alpha = {alpha}, beta = {beta}, gamma = {gamma}, Q = {Q}, numAnts = {numAnts}, iterations = {iterations}")
     num = int(input("Press 1 to select data file queen11_11.col\nPress 2 to select data file le450_15b.col:\nSelect Number:"))
     if num == 1:
         filename = 'data/queen11_11.col'
