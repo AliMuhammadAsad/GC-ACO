@@ -107,9 +107,26 @@
 
 \newpage
 \section{Question 1 - Graph Coloring Problem using Ant Colony Optimization}
-\subsection{Introduction to Graph Coloring Problem}
+\subsection{Introduction and Problem Formulation}
+The Graph Coloring Problem is a well known problem in Computer Science that asks a really simple question, "What is the minimum number of colors required to color a graph such that no two adjacent vertices have the same color?". This problem is NP-Hard, a combinatorial optimization problem, and has a lot of real world applications. The image below shows a graph and its corresponding coloring.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.35\textwidth]{../gco.png}
+    \caption{Graph Coloring Example}
+\end{figure}
 
-\subsection{Problem Formulation}
+In this assignment, the Ant Colony Optimization (ACO) Algorithm is used to efficiently provide a solution for coloring of a graph with minimum number of colors. The ACO algorithm is a probabilistic technique for solving computational problems which can be reduced to finding good paths through graphs. The ACO algorithm is inspired by the foraging behavior of ants and is a class of optimization algorithms that are based on the behavior of ants.
+
+The problem can be formally formulated as follows:
+\begin{definition}
+    Given a graph $G = (V, E)$, where $V$ is the set of vertices and $E$ is the set of edges, a $k$-coloring of $G$ is a mapping such that $c: V \to \{ 1, 2, 3, ..., k \} $ is a mapping from the set of vertices to the set of colors such that $ \forall u, v \in V, \{ u, v \} \in E $ where $ \{u, v\} $ represents an edge from vertex $u$ to vertex $v$, $c(u) \neq c(v)$. The objective is to find the minimum value of $k$ such that a $k$-coloring of $G$ exists.
+\end{definition}
+
+We invoke the help of a theorem in Graph Theory for our implementation which makes things much easier for us, and helps us get to the solution faster. The theorem is as follows:
+\begin{theorem}
+    If $G$ is a simple graph with the largest vertex degree $ \triangle $, then $G$ is $ (\triangle + 1) $-colorable.
+\end{theorem}
+The above theorem is used in the color assignments, due to which the color assignement is initially sub-optimal, and not equal to the number of nodes, thus we get to an optimal solution much faster.
 
 \subsection{Implementation of the Ant Colony Optimization Algorithm}
 \subsubsection{Parameters}
