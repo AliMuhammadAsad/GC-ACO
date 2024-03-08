@@ -42,7 +42,7 @@ class GraphColorACO:
     def generateColorings(self) -> None:
         ''' This method generates a coloring for the graph for each ant in the colony. Each ant constructs a solution by traversing the graph and coloring the nodes. The coloring is then stored in the coloring array. '''
         for i in range(self.numAnts):
-            self.ants[i].initialize()
+            self.ants[i].initializeColors()
             self.coloring[i] = self.ants[i].graphTraversal(self.pheromone)
     
     def updatePheroMat(self) -> None:

@@ -32,7 +32,7 @@ class Cheenti:
         self.colorMap = {}
         self.colorAssign = {}
     
-    def initialize(self) -> None:
+    def initializeColors(self) -> None:
         '''
         This method initializes the color map and color assignment. The color map is a dictionary that maps the colors to the nodes that have been colored with that color. The color assignment is a dictionary where they keys are the nodes and the values are the colors assigned to those nodes.
         '''
@@ -45,9 +45,12 @@ class Cheenti:
         ''' This method returns a random node from the set of unvisited node. This node acts as the source for the ant to start traversing the graph. '''
         return random.choice(list(unvisited))
     
-    def getVisibility(self, node: int, visited: set) -> int:
+    def getVisibility(self, node: int, visited: set, unvisited: set, heur: int) -> int:
         ''' This method returns the visibility of a node, which is the degree of the node with respect to the number of visited nodes. '''
-        return self.Graph.degreesPlus(node, visited)
+        if heur == 1:
+            return self.Graph.degreesPlus(node, visited)
+        elif heur == 3:
+            return self.Graph.degreesPlus(node, visited.union(unvisited))
     
     def getPheromonesTrail(self, node: int, color: int, PheroMat: np.ndarray) -> float:
         ''' This method returns the average pheromone trail on the edges between a node and the nodes that have been colored with the same color.'''
@@ -70,6 +73,7 @@ class Cheenti:
         '''
         This method takes the pheromone matrix as input, and constructs a complete traversal in the graph and updates the distance of the path. 
         '''
+        heur = 1
         q = k = 0
         unvisited = set(self.unvisited)
         while k < self.nodes:
@@ -86,7 +90,7 @@ class Cheenti:
                 visited = visited.union(neighbors)
                 unvisited = unvisited.difference(neighbors.union({source}))
                 unvisited_list = list(unvisited)
-                visible = {v: self.getVisibility(v, visited) for v in unvisited}
+                visible = {v: self.getVisibility(v, visited, unvisited, heur) for v in unvisited}
                 PheroTrail = {v: self.getPheromonesTrail(v, q, PheroMat) for v in unvisited}
                 source = self.Probabilities(visible, PheroTrail, unvisited_list)
                 neighbors = self.Graph.neighbors(source, unvisited)
@@ -102,5 +106,5 @@ class Cheenti:
         for v1 in range(self.nodes):
             for v2 in range(self.nodes):
                 if self.colorAssign[v1] == self.colorAssign[v2] and (v1 != v2):
-                    PMat[v1, v2] = self.Q / self.distance
+                    PMat[v1, v2] = self.Q
         return PMat

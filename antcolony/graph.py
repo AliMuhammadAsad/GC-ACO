@@ -40,13 +40,9 @@ class Graph:
         return self.graph.get(node, set()).intersection(nodes_set)
 
     def degreesSingleNode(self, node: int) -> int:
-        ''''
-        Returns the degree - the number of neighbors - of a given node.
-        '''
+        '''' Returns the degree - the number of neighbors - of a given node. '''
         return len(self.graph.get(node, set()))
     
     def degreesPlus(self, node: int, nodes_set: set) -> int:
-        '''
-        Returns the number of neighbors of a given node that are also in a given set of nodes.
-        '''
+        ''' Returns the number of neighbors of a given node that are also in a given set of nodes. '''
         return len(self.graph.get(node, set()).intersection(nodes_set))
