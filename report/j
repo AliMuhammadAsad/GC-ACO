@@ -1,3 +1,8 @@
 #!/usr/bin/bash
 
+# while true; do
+#     rm -rf *.aux *.log *.toc *.out *.fls *.fdb_latexmk *.synctex.gz
+#     sleep 30
+# done;
+
 rm -rf *.aux *.log *.toc *.out *.fls *.fdb_latexmk *.synctex.gz
