@@ -11,9 +11,9 @@ from antcolony.GraphColorACO import *
 # Testing Params
 alpha = 4.0          # relative importance of the pheromone trail
 beta = 4.0           # relative importance of the heuristic information
-gamma = 0.95        # evaporation rate of the pheromone trail
+gamma = 0.9        # evaporation rate of the pheromone trail
 Q = 5             # Amount of Pheromone deposited by an ant
-numAnts = 10        # Number of ants
+numAnts = 5        # Number of ants
 iterations = 100    # Number of iterations
 
 
@@ -28,6 +28,8 @@ if __name__ == "__main__":
         filename = 'data/le450_15b.col'
     elif num == 3:
         filename = 'data/test.txt'
+    elif num == 4:
+        filename = 'data/test2.txt'
     print(f"File {filename} selected. If its the second file, please wait a few seconds for it to load - heavy data")
     Graph = Graph(filename)
     AntColony = GraphColorACO(Graph, alpha, beta, gamma, Q, numAnts, iterations)
