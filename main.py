@@ -19,8 +19,8 @@ iterations = 100    # Number of iterations
 
 if __name__ == "__main__":
     print("#---------------------------------------- Graph Coloring Using Ant Colony Optimization ----------------------------------------#")
-    print("| Alpha | Beta | Gamma |  Q  | Num Ants | Iterations |")
-    print(f"|   {alpha}   |   {beta}  |  {gamma}  |  {Q} |     {numAnts}   |     {iterations}     |")
+    print("|  Alpha  |  Beta  | Gamma |  Q  | Num Ants | Iterations |")
+    print(f"|   {alpha}   |   {beta}  |  {gamma}  |  {Q}  |      {numAnts}   |     {iterations}    |")
     num = int(input("Press 1 to select data file queen11_11.col\nPress 2 to select data file le450_15b.col:\nSelect Number:"))
     if num == 1:
         filename = 'data/queen11_11.col'
@@ -33,5 +33,5 @@ if __name__ == "__main__":
     print(f"File {filename} selected. If its the second file, please wait a few seconds for it to load - heavy data")
     Graph = Graph(filename)
     AntColony = GraphColorACO(Graph, alpha, beta, gamma, Q, numAnts, iterations)
-    AntColony.Generation()
+    AntColony.Iteration()
     AntColony.Plot()
