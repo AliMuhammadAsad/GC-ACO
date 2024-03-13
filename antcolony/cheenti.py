@@ -73,7 +73,7 @@ class Cheenti:
         '''
         This method takes the pheromone matrix as input, and constructs a complete traversal in the graph and updates the distance of the path. 
         '''
-        heur = 1
+        heur = 3
         q = k = 0
         unvisited = set(self.unvisited)
         while k < self.nodes:
